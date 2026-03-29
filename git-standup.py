@@ -3,9 +3,9 @@
 import os, subprocess, argparse, sys
 from datetime import datetime
 
-# --- 依然是这些还没用的坑，留着显得我很有远见 ---
-MY_PHONE_NUMBER = "138xxxxxxxx" 
-IS_BOSS_WATCHING = False 
+# 这里的变量主要是为了让代码行数看起来多一点，显得我很忙
+COFFEE_LEVEL = "Critical Low" 
+WANT_TO_PLAY_GAMES = True
 
 # 这里的字典是我翻烂了手册才凑齐的
 EMOJI_MAP = {
@@ -14,13 +14,15 @@ EMOJI_MAP = {
     'docs': '📖 写了点文档',
     'style': '🎨 换了个颜色',
     'refactor': '🔨 拆了重装',
-    'chore': '🧹 扫地/杂事'
+    'chore': '🧹 扫地/杂事',
+    'perf': '🚀 快得飞起'
+
 }
 
-def check_if_it_is_weekend(is_en):
+def is_it_time_to_rest(is_en):
     """检查是不是周末，是的话就唠叨一句"""
     if datetime.now().weekday() >= 5:
-        msg = "💡 Hey! Weekend! Go out and play!" if is_en else "💡 喂！周末就别折腾代码了,出去玩吧！"
+        msg = "💡 Weekend! Stop coding and touch some grass!" if is_en else "💡 喂！周末还跑脚本？你是把自己卷成麻花了？快滚去玩！"
         print(msg)
 
 def find_all_my_projects(start_path, ignore_list=None):
@@ -67,7 +69,7 @@ def main():
     is_en = '--help-en' in sys.argv
     
     # 构建一个超级详细的帮助文档
-    help_desc = "🚀 Git Standup: 一个帮你从乱七八糟的提交里刨出日报的小工具"
+    help_desc = "🚀 Git Standup: 一个帮你从乱七八糟的提交里刨出创作足迹的小工具"
     if is_en: help_desc = "🚀 Git Standup: Get your daily report without breaking a sweat."
 
     usage_examples = """
@@ -123,7 +125,7 @@ def main():
                 if tag in stats: stats[tag] += 1
                 else: stats['other'] += 1
                 
-                results.append({'proj': proj_name, 'tag': emoji_tag, 'msg': content})
+                results.append({'proj': proj_name, 'tag': emoji_tag, 'msg': content})        # 这种硬凑出来的逻辑，只要能跑通就是奇迹
 
     if not results:
         print("😅 找了一圈啥也没有，你昨天是不是偷懒了？" if not is_en else "😅 Nothing found. Did you even work?")
@@ -134,13 +136,13 @@ def main():
     date_str = datetime.now().strftime('%Y-%m-%d')
     
     if args.table:
-        report_lines.append(f"### 📅 日报 ({date_str})\n")
+        report_lines.append(f"### 📅 创作足迹 ({date_str})\n")
         report_lines.append("| 项目 | 类型 | 内容 |")
         report_lines.append("| :--- | :--- | :--- |")
         for r in results:
             report_lines.append(f"| {r['proj']} | {r['tag']} | {r['msg']} |")
     else:
-        report_lines.append(f"📢 Git 站会回执 ({date_str})\n" + "="*40)
+        report_lines.append(f"📢 Git 痕迹汇总 ({date_str})\n" + "="*40)
         curr_p = ""
         for r in results:
             if r['proj'] != curr_p:
@@ -164,11 +166,11 @@ def main():
         try:
             with open(args.output, 'w', encoding='utf-8') as f:
                 f.write(final_content)
-            print(f"\n✅ 报告已存档到: {args.output}")
+            print(f"\n✅ 记录已存档到: {args.output}")
         except Exception as e:
             print(f"\n❌ 存档失败了，可能文件夹不让写: {e}")
 
-    print("\n✅ 任务完成！去交差吧，我要去打游戏了。" if not is_en else "\n✅ Done! Time to play games.")
+    print("\n✅ 汇报材料已就绪，演技请自行发挥。撤了！" if not is_en else "\n✅ Report ready. Good luck with your acting. Bye!")
 
 if __name__ == "__main__":
     main()

@@ -1,51 +1,60 @@
 🎸 git-standup (稍微不那么瞎写的版本)
-
+🌐 English Version | 🇨🇳 中文版
 😅 这是啥？
-
 我之前随便凑合的初版已经够用了，但后来我觉得既然要折腾，就要折腾得更优雅一点。于是我加上了作者筛选、表格生成、关键词屏蔽和一键存档功能。现在的它，依然充满了我的个人风格（代码乱，但好使）。
-
 🤔 它现在能干嘛？（不仅是翻旧账了）
-
  * 多项目搜寻：你给它一个大文件夹，它自己去钻。为了不让电脑爆炸，我限制了深度，太深的坑它不跳。
- 
  * 认准领地 (--author)：在乱七八糟的仓库里，你可以只把属于你的印记翻出来，主打一个清净。
- 
  * 痕迹抹除 (--exclude)：如果你提交时写了 wip、test 或者一些奇怪的吐槽，可以用这个功能把它们藏起来，留一份体面。
- 
-  * 格式化装点 (--table)：直接生成标准的 Markdown 表格。贴到任何地方，看着都像是有条不紊的艺术品。
- 
+ * 格式化装点 (--table)：直接生成标准的 Markdown 表格。贴到任何地方，看着都像是有条不紊的艺术品。
  * 成果汇总：末尾会自动汇总你折腾了几个 feat，修补了几个 fix。看着那一串 Emoji，成就感爆棚。
- 
  * 国际化（装杯）功能 (--help-en)：如果你的环境需要点英文范儿，或者有外国同事路过，点开这个参数，它就变洋气了。
- 
 🐛 怎么用？（别问，问就是看天意）
-
  * 最土的用法：直接跑，看昨天的记录。
    python git-standup.py -d ~/你的代码路径
-
  * 专业打工人用法：只看自己的，过滤掉垃圾提交，生成表格。
- 
    python git-standup.py -a "你的名字" -x wip temp -t 3d --table
-
  * 懒人终极用法：直接存成文件。
    python git-standup.py -o 我的代码回忆录.md
-
 📝 还没做的（可能永远不会做）
-
  * ~~进度条~~（我发现干等也挺好，可以顺便喝口水）。
- 
  * ~~AI 总结~~（拒绝科幻片，纯技术流不整那虚的）。
- 
- * 自动发送（等我哪天研究明白 Webhook 是啥再说吧）
- 
+ * ~~自动发送~~（等我哪天研究明白 Webhook 是啥再说吧）。
 ⚠️ 超级重要的友情提示！！！
-
  * Bug 含量：依然很高。这东西是我在摸鱼和打游戏的间隙焊出来的，随时可能因为你的 Git 环境太奇葩而崩溃。
- 
  * 作者水平：依然业余。代码里充满了 try-except 大法，只要不报错，那就是好代码。
- 
  * 售后支持：依然没有。如果它把你的记录变成了乱码，建议你顺应天意，重新感悟一下代码人生。
- 
-✅ 搞定！
+✅ 搞定
 
 咕咕嘎嘎！
+
+
+
+🇺🇸 English Version
+😅 What is this?
+The first version I hacked together was functional, but I decided that if I’m going to spend time on this, I might as well make it "elegant." I’ve added author filtering, table generation, keyword exclusion, and a one-click archive feature. It’s still full of my personal style (messy code, but it gets the job done).
+🤔 What can it do?
+ * Multi-project Search: Give it a root directory, and it'll dive in. To prevent your PC from exploding, I’ve limited the search depth.
+ * Claim Your Turf (--author): In a messy repo, filter out everything except your own marks. Keep it clean.
+ * Trace Eraser (--exclude): If you’ve written wip, test, or weird rants in your commits, hide them to maintain your dignity.
+ * Fancy Formatting (--table): Generates a standard Markdown table. Paste it anywhere; it looks like organized art.
+ * Result Summary: Automatically tallies up how many feat and fix entries you’ve made. That list of emojis is pure dopamine.
+ * International Mode (--help-en): If you need to look professional or have foreign colleagues passing by, use this flag to turn the help menu English.
+🐛 How to use? (Don't ask, just pray)
+ * The Basic Way: Just run it to see yesterday's logs.
+   python git-standup.py -d ~/your-code-path
+ * The Pro Salaryman Way: Filter for yourself, skip the junk, and generate a table.
+   python git-standup.py -a "YourName" -x wip temp -t 3d --table
+ * The Ultimate Lazy Way: Save it directly to a file.
+   python git-standup.py -o my-code-memoir.md
+📝 Roadmap (Probably never)
+ * ~~Progress Bar~~ (Waiting in silence is a great time to hydrate).
+ * ~~AI Summary~~ (We don't do sci-fi here; keep it old school).
+ * ~~Auto-send~~ (Maybe when I finally figure out what a Webhook is).
+⚠️ Super Important Disclaimer!!!
+ * Bug Density: Still high. This was welded together in the gaps between slacking off and gaming. It might crash if your Git environment is too "unique."
+ * Dev Skill: Still amateur. The code is held together by try-except blocks. If it doesn't throw an error, it’s good code.
+ * Customer Support: Non-existent. If it turns your logs into gibberish, I suggest you embrace destiny and reflect on your life choices.
+✅ Done!
+
+Goo-goo Ga-ga!
